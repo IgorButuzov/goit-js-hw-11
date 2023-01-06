@@ -1,4 +1,6 @@
-
+p{
+    margin: 0;
+}
 input{
     border-radius: 5px;
     font-size: 20;
@@ -15,4 +17,22 @@ button{
     gap: 10px;
     background-color: rgb(221, 233, 248);
     padding: 10px;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.photo-card {
+    border-radius: 4px;
+    border: 1px solid rgb(154, 164, 250);
+   
+}
+.photo-card img {
+    width: 300px;
+    height: 220px;
+    object-fit: cover;
+}
+.load-more-btn{
+display: none;
 }
