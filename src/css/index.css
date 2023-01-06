@@ -21,7 +21,7 @@ button{
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
 }
 .photo-card {
     border-radius: 4px;
@@ -35,4 +35,8 @@ button{
 }
 .load-more-btn{
 display: none;
+}
+
+.info-item{
+    display: flex;
 }
