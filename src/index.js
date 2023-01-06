@@ -1,5 +1,5 @@
 import SimpleLightbox from "simplelightbox";
-import 'simplelightbox/dist/simple-lightbox.min.css';
+import "simplelightbox/dist/simple-lightbox.min.css"
 import Notiflix from 'notiflix';
 const axios = require('axios').default;
 
@@ -78,6 +78,7 @@ getImage(inputValue).then(({hits, totalHits}) => {
   if (inputValue.length > 0) {
     createMarcup(hits);
     Notiflix.Notify.success(`"Hooray! We found ${totalHits} images."`);
+    lightbox.refresh();
     setTimeout(() => {
     refs.loadMoreBtn.style.display = 'block';
     }, 200);
@@ -86,6 +87,7 @@ getImage(inputValue).then(({hits, totalHits}) => {
     };
 })
 .catch(err => console.log(err));
+
 page += 1;
 }
 
