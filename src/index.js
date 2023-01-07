@@ -45,7 +45,7 @@ inputValue = e.target.value;
 function onSubmitClick(e) {
 e.preventDefault();
 refs.gallery.innerHTML = '';
-  
+page = 1;
 getImage(inputValue).then(({hits, totalHits}) => {
   if (inputValue.length > 0 && totalHits > 0) {
     createMarcup(hits);
@@ -60,7 +60,7 @@ getImage(inputValue).then(({hits, totalHits}) => {
   };
 })
 .catch(err => console.log(err));
-page += 1;
+
 }
 
 function onLoadMoreBtnClick() {
@@ -71,14 +71,14 @@ function onLoadMoreBtnClick() {
     return
   } else {
     refs.loadMoreBtn.style.display = 'block';
-    page = Number(page) + 1;
+    page += 1;
     getImage(inputValue)
       .then(({ hits, totalHits }) => {
         if (hits.length > 0) {
           createMarcup(hits)
           paginationLoadMore(totalHits)
           lightbox.refresh();
-}
+      }
     })
   }
 };
