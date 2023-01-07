@@ -1,13 +1,8 @@
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css"
+import { lightbox } from "./js/simplelightbox";
+import { createMarcup } from "./js/create_marcup";
+
 import Notiflix from 'notiflix';
 const axios = require('axios').default;
-
-let lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250
-});
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -43,29 +38,6 @@ per_page=40`);
   }
 };
 
-function createMarcup(hits) {
-  const markup = hits.map(({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) => `<div class="photo-card">
-  <a href= ${largeImageURL}>
-  <img src="${webformatURL}" alt="${tags}" loading="lazy"/>
-  </a>
-  <div class="info">
-    <p class="info-item">
-      <b>Likes: ${likes}</b>
-    </p>
-    <p class="info-item">
-      <b>Views: ${views}</b>
-    </p>
-    <p class="info-item">
-      <b>Comments: ${comments}</b>
-    </p>
-    <p class="info-item">
-      <b>Downloads: ${downloads}</b>
-    </p>
-  </div>
-  </div>`).join('');
-  refs.gallery.insertAdjacentHTML('beforeend', markup)
-}
-
 function onInputValue(e) {
 inputValue = e.target.value;
 }
@@ -75,7 +47,7 @@ e.preventDefault();
 refs.gallery.innerHTML = '';
   
 getImage(inputValue).then(({hits, totalHits}) => {
-  if (inputValue.length > 0) {
+  if (inputValue.length > 0 && totalHits > 0) {
     createMarcup(hits);
     Notiflix.Notify.success(`"Hooray! We found ${totalHits} images."`);
     lightbox.refresh();
@@ -84,10 +56,10 @@ getImage(inputValue).then(({hits, totalHits}) => {
     }, 200);
   } else {
       Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
-    };
+      refs.loadMoreBtn.style.display = 'none';
+  };
 })
 .catch(err => console.log(err));
-
 page += 1;
 }
 

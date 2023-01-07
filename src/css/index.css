@@ -10,7 +10,7 @@ button{
         font-size: 15;
         cursor: pointer;
 }
-.search-form{
+.search-form,.load-more{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,9 +19,12 @@ button{
     padding: 10px;
 }
 .gallery {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
     gap: 10px;
+    
 }
 .photo-card {
     border-radius: 4px;
@@ -33,10 +36,22 @@ button{
     height: 220px;
     object-fit: cover;
 }
+
 .load-more-btn{
 display: none;
-}
+margin: 0 auto;
 
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+
+}
 .info-item{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+
 }
+

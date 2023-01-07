@@ -7,17 +7,9 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <form class="search-form" id="search-form">
-      <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
-      <button type="submit">Search</button>
-    </form>
-
-    <div class="gallery">
-    </div>
-
-    <div>
-      <button type="button" class="load-more-btn">Load more</button>
-    </div>
+    <include src="./partials/searchform.html"></include>
+    <include src="./partials/gallery_container.html"></include>
+    <include src="./partials/loadmore_btn.html"></include>
 
     <script src="./index.js" type="module"></script>
   </body>
